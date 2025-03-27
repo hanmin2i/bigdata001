@@ -17,8 +17,6 @@ def is_prime(number):
         return False
     return True
 number = int(input())
-
-
 if is_prime:
     print(f"{number}는 소수입니다")
 else:
