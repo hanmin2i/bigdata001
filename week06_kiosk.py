@@ -1,10 +1,9 @@
 drinks = ["아이스 아메리카노", "카페라떼", "수박주스" , "딸기주스"]    #len은 리스트 안에 들어있는 원소 갯수
 prices = [1500, 2500, 4000, 4500]
 total_price = 0
-# amounts = list()
-# for _ in range(len(drinks)):
-#     amounts.append(0)      #append 리스트안에 데이터 추가
-amounts = [0 for _ in range(len(drinks))] # list comprehension (리스트 축약) _는 변수 없이 그냥 사용할때
+
+# amounts = [0 for _ in range(len(drinks))]
+amounts = [0] * len(drinks)
 menu_texts = ""
 
 def order_process(idx):
@@ -18,8 +17,8 @@ def order_process(idx):
     amounts[idx] = amounts[idx] + 1
 
 for j in range(len(drinks)):
-    menu_texts = menu_texts + f"{j+1}) {drinks[j]} {prices[j]}원"
-menu_texts = menu_texts + f"{len(drinks)+1} 주문종료 : "
+    menu_texts = menu_texts + f"{j+1}){drinks[j]} {prices[j]}원 "
+menu_texts = menu_texts + f"{len(drinks)+1})주문종료 : "
 
 while True:
     menu = int(input(menu_texts))
@@ -27,7 +26,7 @@ while True:
         order_process(menu-1)
 
     elif menu == len(drinks) + 1 :
-        print("주문을 종료합니다")
+        print(" ) 주문을 종료합니다")
         break
     else:
         print(f"{menu}번 메뉴는 존재하지 않습니다. 아래 메뉴에서 골라주세요")
