@@ -1,7 +1,9 @@
-drinks = ["아이스 아메리카노", "카페라떼", "수박주스"]    #len은 리스트 안에 들어있는 원소 갯수
-prices = [1500, 2500, 4000]
+drinks = ["아이스 아메리카노", "카페라떼", "수박주스" , "딸기주스"]    #len은 리스트 안에 들어있는 원소 갯수
+prices = [1500, 2500, 4000, 4500]
 total_price = 0
-amounts = [0, 0, 0]
+amounts = list()
+for _ in range(len(drinks)):
+    amounts.append(0)      #append 리스트안에 데이터 추가
 menu_texts = ""
 
 def order_process(idx):
