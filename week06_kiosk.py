@@ -1,5 +1,4 @@
-# 1)아아 :2000 2) 라때 : 2500
-drinks = ["아이스 아메리카노", "카페 라떼", "수박 주스"]
+drinks = ["아이스 아메리카노", "카페라떼", "수박주스"]    #len은 리스트 안에 들어있는 원소 갯수
 prices = [1500, 2500, 4000]
 total_price = 0
 amounts = [0, 0, 0]
@@ -15,23 +14,16 @@ def order_process(idx):
     total_price = total_price + prices[idx]
     amounts[idx] = amounts[idx] + 1
 
-
 for j in range(len(drinks)):
     menu_texts = menu_texts + f"{j+1}) {drinks[j]} {prices[j]}원"
 menu_texts = menu_texts + f"{len(drinks)+1} 주문종료 : "
 
 while True:
-    menu = input(menu_texts)
-    if menu =="1":   #f는 f-string으로 문자열 안에서 변수, 함수 사용가능
-        order_process(int(menu) -1)
+    menu = int(input(menu_texts))
+    if len(drinks) >=menu >=1:                                #f는 f-string으로 문자열 안에서 변수, 함수 사용가능
+        order_process(menu-1)
 
-    elif menu =="2":
-        order_process(int(menu) - 1)
-
-    elif menu == "3":
-        order_process(int(menu) -1)
-
-    elif menu == "4":
+    elif menu == len(drinks) + 1 :
         print("주문을 종료합니다")
         break
     else:
