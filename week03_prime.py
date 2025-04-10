@@ -12,6 +12,8 @@ else:
     is_prime = False
 
 if is_prime:
+    print("\n")
     print(f"{number}는 소수입니다")
 else:
+    print("\n")
     print(f"{number}는 소수가 아닙니다")
