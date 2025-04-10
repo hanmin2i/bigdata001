@@ -28,7 +28,10 @@ while True:                              #배열 순서
         print(f"{menu}번 메뉴는 존재하지 않습니다. 아래 메뉴에서 골라주세요")
 
 #print(order_list)
-print(f"{drinks[0]} {prices[0]}원 {amounts[0]}잔 {prices[0] * amounts[0]}원")
-print(f"{drinks[1]} {prices[1]}원 {amounts[1]}잔 {prices[1] * amounts[1]}원")
-print(f"{drinks[2]} {prices[2]}원 {amounts[2]}잔 {prices[2] * amounts[2]}원")
+# print(f"{drinks[0]} {prices[0]}원 {amounts[0]}잔 {prices[0] * amounts[0]}원")
+# print(f"{drinks[1]} {prices[1]}원 {amounts[1]}잔 {prices[1] * amounts[1]}원")
+# print(f"{drinks[2]} {prices[2]}원 {amounts[2]}잔 {prices[2] * amounts[2]}원")
+print("상품명 단가 수량 금액")
+for i in range(len(drinks)):
+    print(f"{drinks[i]} {prices[i]} {amounts[i]} {prices[i] * amounts[i]}")
 print(f"총 주문 금액 : {total_price}")
