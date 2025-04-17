@@ -4,8 +4,8 @@ total_price = 0
 
 
 amounts = [0] * len(drinks)
-
-def order_process(idx):
+                   #실제론 영향을 안받음 타입 힌트 -> 리턴값
+def order_process(idx : int) -> None:
     """
     주문 처리 함수 1) 주문 디스플레이 2)총 주문 금액 누산 3) 수량 업데이트
     idx : 고객이 선택한 메뉴 -1 (인덱스, 정수)
@@ -16,7 +16,7 @@ def order_process(idx):
     total_price = total_price + prices[idx]
     amounts[idx] = amounts[idx] + 1
 
-def display_menu():
+def display_menu() -> str:
     '''
     음료선택 메뉴 디스플레이 함수
     :return: 음료 메뉴 및 주문 종료 문자열
@@ -26,7 +26,7 @@ def display_menu():
     menu_texts = menu_texts + f" {len(drinks) + 1})주문종료 : "
     return menu_texts
 
-def print_receipt():
+def print_receipt() -> None:
     '''
     영수증 출력 기능
     :return: 없음
