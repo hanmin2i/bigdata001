@@ -1,9 +1,8 @@
 drinks = ["아이스 아메리카노","카페라떼","수박주스","딸기주스"]
 prices = [1500, 2500, 4000, 4500]
 total_price = 0
-
-
 amounts = [0] * len(drinks)
+
                    #실제론 영향을 안받음 타입 힌트 -> 리턴값
 def order_process(idx : int) -> None:
     """
@@ -37,14 +36,20 @@ def print_receipt() -> None:
             print(f"{drinks[i]:^20}{prices[i]:^6}{amounts[i]:^6}{prices[i] * amounts[i]:^6}")
     print(f"총 주문 금액 : {total_price}원")
 
-while True:
-    menu = int(input(display_menu()))
-    if len(drinks) >=menu >=1:
-        order_process(menu-1)
 
-    elif menu == len(drinks) + 1 :
-        print(" 주문을 종료합니다")
-        break
-    else:
-        print(f"{menu}번 메뉴는 존재하지 않습니다. 아래 메뉴에서 골라주세요")
+
+while True:
+    try:
+       
+        menu = int(input(display_menu()))
+        if len(drinks) >=menu >=1:
+            order_process(menu-1)
+
+        elif menu == len(drinks) + 1 :
+            print(" 주문을 종료합니다")
+            break
+        else:
+            print(f"{menu}번 메뉴는 존재하지 않습니다. 아래 메뉴에서 골라주세요")
+    except ValueError:
+        print("숫자를 입력해주십쇼")
 print_receipt()
