@@ -19,7 +19,7 @@ def is_prime(number): #is_prime 함수 정의
         return False
     return True
 number = int(input())
-if is_prime:
+if is_prime(number):
     print(f"{number}는 소수입니다")
 else:
     print(f"{number}는 소수가 아닙니다")
