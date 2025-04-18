@@ -1,4 +1,6 @@
-from kiosk import *
+#from kiosk import * # = import kiosk from은 충돌이 일어날수있음
+from kiosk import drinks, display_menu, order_process, print_receipt, total_price
+
 # crtl + r
 
 # 실제론 영향을 안받음 타입 힌트 -> 리턴값
@@ -18,3 +20,5 @@ while True:
     except ValueError:
         print("숫자를 입력해주십쇼")
 print_receipt()
+#test()
+print(total_price)
