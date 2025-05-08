@@ -16,4 +16,3 @@ if __name__=="__main__":
         except ValueError:
             print("숫자를 입력해주십쇼")
     kk.print_receipt()
-    print(kk.total_price)
