@@ -17,6 +17,24 @@ def apply_discount(price: int) ->float:
         return price * (1-DISCOUNT_RATE)
     return price
 
+def get_ticket_number() -> int:
+    '''
+    주문 번호표 처리기능 함수, 파일 입출력
+    :return: 번호 
+    파일이 없을시 넘버를 초기화한후 1을 증가 그후 txt파일에 number 추가 그후 프로그램을 다시 돌리면 txt파일이 있으니 read만 실행
+    '''
+    try:
+        with open("ticket.txt", "r") as fp:
+            number=int(fp.read())
+    except FileNotFoundError:
+        number =0
+
+    number = number +1
+
+    with open("ticket.txt", "w") as fp:
+        fp.write(str(number))
+
+    return number
 def order_process(idx: int) -> None:
     """
     주문 처리 함수 1) 주문 디스플레이 2)총 주문 금액 누산 3) 수량 업데이트
