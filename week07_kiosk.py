@@ -1,5 +1,5 @@
-drinks = ["아이스 아메리카노","카페라떼","수박주스","딸기주스"]
-prices = [1500, 2500, 4000, 4500]
+drinks = ["아이스 아메리카노","카페라떼","수박주스","딸기주스","콜드블루","아인슈페너"]
+prices = [1500, 2500, 4000, 4500,2000,3500]
 total_price = 0
 amounts = [0] * len(drinks)
 
@@ -38,10 +38,10 @@ def print_receipt() -> None:
 
 
 
-while True:
+while True:    # 무한 루프
     try:
        
-        menu = int(input(display_menu()))
+        menu = int(input(display_menu()))  # display함수실행 -> input 문자열 받음 -> int형으로 변환
         if len(drinks) >=menu >=1:
             order_process(menu-1)
 

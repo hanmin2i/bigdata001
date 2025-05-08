@@ -20,5 +20,4 @@ while True:
     except ValueError:
         print("숫자를 입력해주십쇼")
 print_receipt()
-#test()
 print(total_price)
