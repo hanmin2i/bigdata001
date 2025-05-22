@@ -1,3 +1,6 @@
+from datetime import datetime
+import sqlite3
+
 drinks = ["아이스 아메리카노", "카페 라떼", "수박 주스", "딸기 주스"]
 prices = [1500, 2500, 4000, 4200]
 # drinks = ["아이스 아메리카노"]
@@ -7,7 +10,7 @@ total_price = 0
 
 # 할인 적용 정책
 DISCOUNT_THRESHOLD = 10000  # 할인이 적용되는 임계값 (임계값 이상이면 할인 적용)
-DISCOUNT_RATE = 0.1  # 할인율
+DISCOUNT_RATE = 0.05  # 할인율
 
 def run() -> None:
     """
@@ -40,10 +43,10 @@ def apply_discount(price: int) -> float:
     return price
 
 
-def get_ticket_number() -> int:
+def print_ticket_number() -> None:
     """
-    주문 번호표 처리 기능 함수
-    :return: 번호
+    주문 번호표 출력 함수
+    :return: None
     """
     try:
         with open("ticket.txt", "r") as fp:
@@ -55,8 +58,30 @@ def get_ticket_number() -> int:
 
     with open("ticket.txt", "w") as fp:
         fp.write(str(number))
+    conn = sqlite3.connect('cafe.db')  # db instance open
+    cur = conn.cursor()
+    cur.execute('''
+           create table if not exists ticket (
+           id integer primary key autoincrement,
+           number integer not null,
+           created_at text not null default (datetime('now', 'localtime'))
+           )
+       ''')
 
-    return number
+    cur.execute('select number from ticket order by number desc limit 1')
+    result = cur.fetchone()
+
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    if result is None:
+        number = 1
+        cur.execute('insert into ticket (number,created_at) values (?,?)', (number,now))
+    else:
+        number = result[0] + 1
+        cur.execute('insert into ticket (number,created_at) values (?,?)', (number,now))
+
+    conn.commit()
+
+    print(f"번호표 : {number}")
 
 
 def order_process(idx: int) -> None:
@@ -97,11 +122,12 @@ def print_receipt() -> None:
 
     print(f"할인 전 총 주문 금액 : {total_price}원")
     if discount > 0:
-        print(f"할인 금액 : {discount}원")
+        print(f"할인 금액 : {discount}원 {DISCOUNT_RATE*100}% 할인")
         print(f"할인 적용 후 지불하실 총 금액은 {discounted_price}원 입니다.")
     else:
         print(f"할인이 적용되지 않았습니다.\n지불하실 총 금액은 {total_price}원 입니다.")
-
+    #                                날짜와 시간을 문자열로 출력
+    print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 def test() -> None:
     """
