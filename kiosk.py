@@ -103,7 +103,9 @@ def display_menu() -> str:
     음료 선택 메뉴 디스플레이 함수
     :return: 음료 메뉴 및 주문 종료 문자열
     """
-    url = f"https://wttr.in/suwon?format=%C+%t&lang=ko"
+    url = f"https://wttr.in/suwon?format=2"
+    #url = f"https://wttr.in/suwon?&0&Qlang=ko"
+    #url = f"https://wttr.in/suwon?format=%C+%t&lang=ko"
     # url = f"https://naver.com/kk"
     # url = f"https://wttr123.in/suwon?format=%C+%t&lang=ko"  # website address exception
     try:
